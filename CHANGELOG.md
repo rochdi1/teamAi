@@ -41,6 +41,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Release Notes**: 0.2.0 is feature-complete for the Agent-Team-Review phase.
 0.1.0 is the core LLM-Commit-Generator.
 
+## [0.2.1] - 2026-11-17
+
+### Added
+
+- GitHub Branch/PR workflow setup for Agent Teams
+- VS Code Extension initial commit
+
+### Fixed
+
+- Agent definition file paths resolved correctly
+
 ## [Unreleased]
 
 ### Planned
