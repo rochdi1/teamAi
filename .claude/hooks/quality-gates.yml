@@ -1,0 +1,32 @@
+# Quality Gates for Agent Teams - Commit-Message-VSCode Extension Review
+
+on_task_complete:
+  - agent: dev-acceptance
+    checks:
+      - name: no_concurrent_writes
+        description: "Ensure no concurrent writes to target directories"
+      - name: onboarding_flow_complete
+        description: "Verify onboarding tutorial is complete"
+      - name: tool_conflicts_absent
+        description: "Verify no conflicts with existing VS Code extensions"
+
+  - agent: inference-pipeline
+    checks:
+      - name: token_budget_ok
+        description: "Token budget ≤ defined max tokens"
+      - name: latency_target_met
+        description: "Latency target < 200ms per inference step"
+      - name: model_selection_documented
+        description: "Model choice (0.5B-8B) documented with rationale"
+
+  - agent: skeptic-proof
+    checks:
+      - name: counter_argument_provided
+        description: "Provide counter-argument or confirm existing solution"
+      - name: simpler_alternative_identified
+        description: "Identify simpler alternatives if available"
+
+on_team_complete:
+  - name: synthesis_complete
+    description: "Lead agent synthesizes all three viewpoints into final report"
+    output: reports/commit-message-review-2026-11-17.md

@@ -1,0 +1,11 @@
+src/inference-provider.ts
+src/inference-provider.ts.map
+src/git-integration.ts
+src/git-integration.ts.map
+src/extension.ts
+src/extension.ts.map
+package-lock.json
+tsconfig.json
+.vscode/**
+out/
+out/**

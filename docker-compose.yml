@@ -1,0 +1,32 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-commit-gen
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_KEEP_ALIVE=30m
+      - OLLAMA_MAX_LOADED_MODELS=1
+    volumes:
+      - ollama-data:/home/ollama/.ollama
+    devices:
+      - /dev/dri:/dev/dri  # GPU access for accelerated inference
+    deploy:
+      resources:
+        reservations:
+          memory: 4GB
+    restart: unless-stopped
+
+  inference-proxy:
+    image: python:3.11-slim
+    container_name: commit-gen-proxy
+    volumes:
+      - ./proxy:/app
+    ports:
+      - "11435:8000"
+    depends_on:
+      - ollama
+    command: sh -c "pip install flask && python app.py"
+
+volumes:
+  ollama-data:
